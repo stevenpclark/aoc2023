@@ -4,9 +4,9 @@ from scipy import ndimage
 
 def solve(fn):
     with open(fn, 'r') as f:
-        lines = [list(li) for li in f.read().splitlines()]
+        lines = f.read().splitlines()
 
-    m = np.array(lines, dtype=np.chararray)
+    m = np.array([list(li) for li in lines], dtype=np.chararray)
     #pad matrix by one to simplify edge conditions
     m = np.pad(m, 1, constant_values='.')
     m_valid = np.zeros(shape=m.shape, dtype=bool)
